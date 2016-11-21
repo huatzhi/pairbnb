@@ -11,3 +11,11 @@
 /log/*
 !/log/.keep
 /tmp
+/config/secrets.yml
+
+/public/system
+/coverage/
+/spec/tmp
+**.orig
+rerun.txt
+pickle-email-*.html

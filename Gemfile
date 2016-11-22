@@ -56,3 +56,7 @@ gem "clearance"
 
 # For safety purpose
 gem 'figaro'
+
+# For facebook login
+gem 'omniauth'
+gem 'omniauth-facebook'

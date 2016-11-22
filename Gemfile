@@ -53,3 +53,6 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 # For user authentication
 gem "clearance"
+
+# For safety purpose
+gem 'figaro'

@@ -50,3 +50,6 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 # Use bootstrap gem for front end
 gem 'bootstrap-sass', '~> 3.3.6'
+
+# For user authentication
+gem "clearance"

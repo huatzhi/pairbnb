@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show, :edit, :update, :destroy]
 
-  resource :listing
+  resources :listing
 
   get "/sign_in" => "sessions#new", as: "sign_in"
   delete "/sign_out" => "sessions#destroy", as: "sign_out"

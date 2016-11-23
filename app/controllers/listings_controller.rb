@@ -3,7 +3,9 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   def index
-    @index = Listing.all
+    page = params[:page]
+    page ||= 1
+    @index = Listing.page(page)
   end
 
   def show

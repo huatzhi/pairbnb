@@ -63,3 +63,6 @@ gem 'figaro'
 # For facebook login
 gem 'omniauth'
 gem 'omniauth-facebook'
+
+# For pagination
+gem 'kaminari'

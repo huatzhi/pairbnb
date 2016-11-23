@@ -1,0 +1,9 @@
+<h1>Listing</h1>
+
+
+<% @index.each do |listing| %>
+<div class='a-listing-in-index'>
+<h4><%= listing.title %></h4><br>
+<p><a href="/listings/<%= listing.id %>">See More</a></p><br>
+</div>
+<% end %>

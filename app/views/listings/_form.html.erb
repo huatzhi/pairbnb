@@ -1,0 +1,67 @@
+<%= form_for(listing) do |f| %>
+  <% if listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='field'>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :bedroom %>
+    <%= f.number_field :bedroom %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :check_in %>
+    <%= f.time_field :check_in %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :check_out %>
+    <%= f.time_field :check_out %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :number_of_guest %>
+    <%= f.number_field :number_of_guest %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :rules %>
+    <%= f.text_field :rules %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :price_per_night %>
+    <%= f.number_field :price_per_night %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :availability_requirement %>
+    <%= f.text_field :availability_requirement %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :main_image %>
+    <%= f.file_field :main_image %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -19,8 +19,10 @@ class SessionsController < Clearance::SessionsController
   
   def create_from_omniauth
     auth_hash = request.env["omniauth.auth"]
-    host_user = false
-    host_user = true if params[:host].to_i == 1
+    # host_user = false
+    # host_user = true if params[:host].to_i == 1
+    # byebug
+    # does not work
 
     authentication = Authentication.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"]) || Authentication.create_with_omniauth(auth_hash)
     if authentication.user
@@ -28,18 +30,13 @@ class SessionsController < Clearance::SessionsController
       authentication.update_token(auth_hash)
       @next = root_url
       @notice = "Signed in!"
+      redirect_to @next, :notice => @notice
     else
       user = User.create_with_auth_and_hash(authentication,auth_hash)
-      # to allow host start
-      if host_user
-        user.host!
-        user.save!
-      end
-      # to allow host end
+      sign_in(user)
       @next = edit_user_path(user)   
       @notice = "User created - confirm or edit details..."
     end
-    sign_in(user)
-    redirect_to @next, :notice => @notice
+    
   end
 end

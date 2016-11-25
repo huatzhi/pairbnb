@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :listings
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]
+  
+  get '/users/becomeahost' => 'users#tohost', as: 'to_host'
 
   resources :users, controller: "users", only: [:create] do
     resource :password,
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

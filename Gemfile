@@ -66,3 +66,7 @@ gem 'omniauth-facebook'
 
 # For pagination
 gem 'kaminari'
+
+# For image uploading, and storing
+gem 'carrierwave'
+gem "mini_magick"

@@ -61,6 +61,11 @@
     <%= f.file_field :main_image %>
   </div>
 
+  <div class='field'>
+    <%= f.label :previews %>
+    <%= f.file_field :previews, multiple: true %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

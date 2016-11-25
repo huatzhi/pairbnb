@@ -1,0 +1,6 @@
+<%= form_for @user, url: {action: 'update'}, html:{class: 'user-edit-form'} do |f| %>
+  <%= f.text_field :email %>
+  <%= f.text_field :first_name %>
+  <%= f.file_field :avatar %>
+  <%= f.submit %>
+<% end %>

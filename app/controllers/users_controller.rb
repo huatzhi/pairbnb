@@ -33,4 +33,11 @@ class UsersController < Clearance::UsersController
     page ||= 1
     @index = User.page(page)
   end
+
+  def edit
+    unless current_user.id == params[:id].to_i || current_user.admin?
+      redirect_to root_url
+    end
+    @user = User.find(params[:id])
+  end
 end

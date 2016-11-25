@@ -68,5 +68,5 @@ gem 'omniauth-facebook'
 gem 'kaminari'
 
 # For image uploading, and storing
-gem 'carrierwave'
+gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
 gem "mini_magick"

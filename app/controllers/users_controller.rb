@@ -26,6 +26,9 @@ class UsersController < Clearance::UsersController
   end
 
   def index
+    unless current_user.admin?
+      redirect_to root_url
+    end
     page = params[:page]
     page ||= 1
     @index = User.page(page)

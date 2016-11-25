@@ -1,0 +1,11 @@
+<h1>Listing</h1>
+
+
+<% @index.each do |user| %>
+<div class='a-user-in-index'>
+<a href="/users/<%= user.id %>"><h4><%= user.email %></h4></a>
+<p><%= user.first_name %> <%= user.role %></p><br>
+</div>
+<% end %>
+
+<%= paginate @index %>

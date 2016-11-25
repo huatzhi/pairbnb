@@ -1,0 +1,9 @@
+<div>
+<% unless @user.avatar.nil? %>
+  <%= image_tag @user.avatar.url %>
+<% end %>
+</div>
+
+<p><%= @user.email %></p>
+<p><%= @user.first_name %></p>
+<p><%= @user.role %>

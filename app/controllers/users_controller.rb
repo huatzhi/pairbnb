@@ -20,4 +20,14 @@ class UsersController < Clearance::UsersController
     current_user.save!
     redirect_to root_url, :notice => 'login success'
   end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def index
+    page = params[:page]
+    page ||= 1
+    @index = User.page(page)
+  end
 end

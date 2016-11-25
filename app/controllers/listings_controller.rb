@@ -50,7 +50,7 @@ class ListingsController < ApplicationController
 
   private
   def listing_params
-    params.require(:listing).permit :title, :bedroom, :check_in, :check_out, :number_of_guest, :description, :rules, :price_per_night, :availability_requirement, :main_image
+    params.require(:listing).permit :title, :bedroom, :check_in, :check_out, :number_of_guest, :description, :rules, :price_per_night, :availability_requirement, {previews: []}
   end
 
   def set_listing

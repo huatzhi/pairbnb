@@ -62,7 +62,7 @@ class UsersController < Clearance::UsersController
     end
 
     @user = User.find(params[:id])
-    if current_user.admin?
+    unless current_user.id == params[:id].to_i
       redirect_to action: 'index'
     else
       sign_out

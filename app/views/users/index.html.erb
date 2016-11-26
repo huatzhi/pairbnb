@@ -4,7 +4,11 @@
 <% @index.each do |user| %>
 <div class='a-user-in-index'>
 <a href="/users/<%= user.id %>"><h4><%= user.email %></h4></a>
-<p><%= user.first_name %> <%= user.role %></p><br>
+<p><%= user.first_name %> <%= user.role %></p>
+<%= link_to 'edit this user', edit_user_path(user) %>
+<%= link_to 'delete this user', method: :delete, data: { confirm: 'Are you sure?' } %><br><br><br>
+
+
 </div>
 <% end %>
 

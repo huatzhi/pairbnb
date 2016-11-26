@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
     page = params[:page]
     page ||= 1
     @index = Listing.page(page)
+    # Need to do the filter base on the input
   end
 
   def show

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reservations
   resources :listings
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]

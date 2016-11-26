@@ -40,4 +40,33 @@ class UsersController < Clearance::UsersController
     end
     @user = User.find(params[:id])
   end
+
+  def update
+    unless current_user.id == params[:id].to_i || current_user.admin?
+      redirect_to root_url
+    end
+    @user = User.find(params[:id])
+    user_edit_data = params[:user]
+    @user.email=user_edit_data[:email]
+    @user.first_name = user_edit_data[:first_name]
+    unless user_edit_data[:avatar].nil?# || user_edit_data[:avatar].empty?
+      @user.avatar = user_edit_data[:avatar]
+    end
+    @user.save!
+    redirect_to @user, notice: 'User info was successfully updated.' 
+  end
+
+  def delete
+    unless current_user.id == params[:id].to_i || current_user.admin?
+      redirect_to root_url
+    end
+
+    @user = User.find(params[:id])
+    if current_user.admin?
+      redirect_to action: 'index'
+    else
+      sign_out
+      redirect_to root_url
+    end
+  end
 end

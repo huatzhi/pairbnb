@@ -23,6 +23,9 @@ class UsersController < Clearance::UsersController
 
   def show
     @user = User.find(params[:id])
+    if @user.nil?
+      redirect_to root_url
+    end
   end
 
   def index
@@ -39,6 +42,9 @@ class UsersController < Clearance::UsersController
       redirect_to root_url
     end
     @user = User.find(params[:id])
+    if @user.nil?
+      redirect_to root_url
+    end
   end
 
   def update
@@ -46,6 +52,9 @@ class UsersController < Clearance::UsersController
       redirect_to root_url
     end
     @user = User.find(params[:id])
+    if @user.nil?
+      redirect_to root_url
+    end
     user_edit_data = params[:user]
     @user.email=user_edit_data[:email]
     @user.first_name = user_edit_data[:first_name]
@@ -56,12 +65,16 @@ class UsersController < Clearance::UsersController
     redirect_to @user, notice: 'User info was successfully updated.' 
   end
 
-  def delete
+  def destroy
     unless current_user.id == params[:id].to_i || current_user.admin?
       redirect_to root_url
     end
 
     @user = User.find(params[:id])
+    if @user.nil?
+      redirect_to root_url
+    end
+    @user.destroy
     unless current_user.id == params[:id].to_i
       redirect_to action: 'index'
     else

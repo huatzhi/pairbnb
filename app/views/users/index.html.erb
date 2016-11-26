@@ -6,7 +6,7 @@
 <a href="/users/<%= user.id %>"><h4><%= user.email %></h4></a>
 <p><%= user.first_name %> <%= user.role %></p>
 <%= link_to 'edit this user', edit_user_path(user) %>
-<%= link_to 'delete this user', method: :delete, data: { confirm: 'Are you sure?' } %><br><br><br>
+<%= link_to 'delete this user', user_path(user), data: {:confirm => 'Are you sure?'}, :method => :delete %><br><br><br>
 
 
 </div>

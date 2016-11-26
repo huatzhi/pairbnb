@@ -8,4 +8,9 @@
 <p><%= @user.first_name %></p>
 <p><%= @user.role %>
 
+<% if signed_in? %>
+<% if current_user.id == @user.id || current_user.admin? %>
+<%= link_to 'edit this user', edit_user_path(@user) %>
+<%= link_to 'delete this user', user_path(@user), data: {:confirm => 'Are you sure?'}, :method => :delete %><br><br><br>
+
 <!-- if user is tenant, show reservations, else show listing :) -->

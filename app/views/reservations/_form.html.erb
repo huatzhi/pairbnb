@@ -1,0 +1,34 @@
+<% if signed_in? %>
+  <% if current_user.tenant? %>
+    <h3>Rserve this listing</h3>
+
+    <% @reservation ||= Reservation.new %>
+    <%= form_for [@listing, @reservation] do |f| %>
+      <% if reservation.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+          <% reservation.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <!-- form input start here (?)-->
+      <div class='field'>
+        <%= f.label :check_in %>
+        <%= f.date_field :check_in %>
+      </div>
+
+      <div class='field'>
+        <%= f.label :check_out %>
+        <%= f.date_field :check_out %>
+      </div>
+
+    <% end %>
+  <% end %>
+<% else %>
+  <%= link_to 'Sign in to book this listing :)',  sign_in_path %>
+<% end %>

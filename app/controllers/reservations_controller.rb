@@ -8,13 +8,14 @@ class ReservationsController < ApplicationController
     if listing.nil?
       redirect_to root_url
     end
-    reservation = listing.reservation.new(reservation_params)
+    reservation = listing.reservations.new(reservation_params)
     reservation.user = current_user
     reservation.calculate_price
     if reservation.save
-      redirect_to listing, notice 'reservation succeed'
+      ReservationMailer.booking_email(current_user, listing.user, reservation.id).deliver
+      redirect_to listing_path, notice: 'reservation succeed'
     else
-      redirect_to listing, notice 'reservation failure'
+      redirect_to listing_path, notice: 'reservation failure'
     end
   end
 

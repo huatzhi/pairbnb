@@ -4,7 +4,7 @@
 
     <% @reservation ||= Reservation.new %>
     <%= form_for [@listing, @reservation] do |f| %>
-      <% if reservation.errors.any? %>
+      <% if @reservation.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
@@ -25,6 +25,10 @@
       <div class='field'>
         <%= f.label :check_out %>
         <%= f.date_field :check_out %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit %>
       </div>
 
     <% end %>

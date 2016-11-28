@@ -5,10 +5,10 @@
 
 
 <% unless @reservation.paid? %>
-  <form id="checkout" method="post" action="/reservations/<%= @reservation.id %>/pay">
+  <%= form_tag("/reservations/#{@reservation.id}/pay", method: "post", id:'checkout') do %>
     <div id="payment-form"></div>
     <input type="submit" value="Pay $<%= @reservation.total_price %>">
-  </form>
+  <% end %>
 
   <script src="https://js.braintreegateway.com/js/braintree-2.30.0.min.js"></script>
   <script>

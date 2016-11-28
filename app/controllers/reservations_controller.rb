@@ -20,6 +20,38 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def show
+    @reservation = Reservation.find(params[:id])
+    if @reservation.nil? || @reservation.user != current_user
+      redirect_to root_url
+    end
+
+    gon.client_token = Braintree::ClientToken.generate
+  end
+
+  def pay
+    @reservation = Reservation.find(params[:id])
+    if @reservation.nil? || @reservation.user != current_user
+      redirect_to root_url
+    end
+
+    nonce_from_the_client = params[:payment_method_nonce]
+
+    result = Braintree::Transaction.sale(
+      :amount => @reservation.total_price,
+      :payment_method_nonce => nonce_from_the_client,
+      :options => {
+        :submit_for_settlement => true
+      }
+    )
+    if result.success?
+      @reservation.paid!
+      redirect_to root_url, notice: 'Payment succeed!'
+    else
+      redirect_to @reservation, notice: 'Payment failure!'
+    end
+  end
+
   private
   def reservation_params
     params.require(:reservation).permit :check_in, :check_out

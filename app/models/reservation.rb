@@ -8,4 +8,13 @@ class Reservation < ActiveRecord::Base
     self.total_price = self.listing.price_per_night * duration
     self.save
   end
+
+  def paid!
+    self.paid = true
+    self.save!
+  end
+
+  def paid?
+    self.paid
+  end
 end

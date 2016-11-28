@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :listing do
     resources :reservations, only: [:create]
   end
+  resources :reservations, only: [:show]
   resources :listings
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
   get "/sign_up" => "users#new", as: "sign_up"
 
   root to: 'pages#home'
-
+  post '/reservations/:id/pay' => 'reservations#pay', as: 'payment_checkout'
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   # The priority is based upon order of creation: first created -> highest priority.

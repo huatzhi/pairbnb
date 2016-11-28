@@ -12,10 +12,11 @@ class ReservationsController < ApplicationController
     reservation.user = current_user
     reservation.calculate_price
     if reservation.save
-      ReservationMailer.booking_email(current_user, listing.user, reservation.id).deliver
-      redirect_to listing_path, notice: 'reservation succeed'
+      # ReservationJob.perform_later(current_user, listing.user, reservation.id)
+      ReservationMailer.booking_email(current_user, listing.user, reservation.id).deliver_later
+      redirect_to listings_path(listing), notice: 'reservation succeed'
     else
-      redirect_to listing_path, notice: 'reservation failure'
+      redirect_to listings_path(listing), notice: 'reservation failure'
     end
   end
 

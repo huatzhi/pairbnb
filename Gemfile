@@ -80,3 +80,9 @@ gem 'sidekiq'
 
 # fix redis-namespace usage?
 gem 'redis-namespace'
+
+# braintree for sandbox payment API
+gem 'braintree'
+
+# get ruby variable into js
+gem 'gon'

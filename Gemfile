@@ -77,3 +77,6 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 
 # email sender for background queue-ing
 gem 'sidekiq'
+
+# fix redis-namespace usage?
+gem 'redis-namespace'

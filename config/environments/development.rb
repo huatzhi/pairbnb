@@ -44,6 +44,12 @@ Rails.application.configure do
   require 'carrierwave/orm/activerecord'
   
   # for email
+  config.active_job.queue_adapter = :sidekiq
+
+  config.active_job.queue_name_prefix = "pairbnb"
+  config.active_job.queue_name_delimiter = "_"
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {

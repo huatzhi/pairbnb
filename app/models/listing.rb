@@ -7,10 +7,10 @@ class Listing < ActiveRecord::Base
     using: {tsearch: {dictionary: "english"}}
 
   def self.text_search(query)
-    if query.presents?
+    if query.present?
       search(query)
     else
-      scoped
+      self
     end
   end
 

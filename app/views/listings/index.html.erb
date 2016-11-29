@@ -4,7 +4,15 @@
   <%= link_to 'New Listing', new_listing_path %>
 </div>
 <% end %>
+<!-- <div class='row'>
+  <div class='col-md' -->
+  <%= form_tag('/listings', method: 'get', id: 'search-form') do %>
+    <%= label_tag :query, "Search for:" %>
+    <%= text_field_tag :query %>
 
+    <%= submit_tag 'search' %>
+  <% end %>
+<!-- </div> -->
 
 <% @index.each do |listing| %>
 

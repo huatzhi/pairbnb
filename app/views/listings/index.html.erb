@@ -10,6 +10,20 @@
     <%= label_tag :query, "Search for:" %>
     <%= text_field_tag :query %>
 
+    <h5>Filter by:</h5>
+
+    <%= label_tag :price_min , "Minimum Price" %>
+    <%= text_field_tag :price_min %>
+
+    <%= label_tag :price_max , "Maximum Price" %>
+    <%= text_field_tag :price_max %> <!-- number_field_tag -->
+
+    <%= label_tag :limit_city , "City: " %>
+    <%= text_field_tag :limit_city %>
+
+    <%= label_tag :limit_country , "Country: " %>
+    <%= text_field_tag :limit_country %>
+
     <%= submit_tag 'search' %>
   <% end %>
 <!-- </div> -->

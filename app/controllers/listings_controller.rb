@@ -9,8 +9,13 @@ class ListingsController < ApplicationController
     query = params[:query]
     query ||= ""
 
-    @index = Listing.text_search(query).page(page).per(10)
-    # Need to do the filter base on the input
+    # @index = Listing.text_search(query).page(page).per(10)
+    @index = Listing.text_search(query)
+    @index = @index.price_min(params[:price_min]) if params[:price_min].present? 
+    @index = @index.price_max(params[:price_max]) if params[:price_max].present?
+    @index = @index.limit_city(params[:limit_city]) if params[:limit_city].present?
+    @index = @index.limit_country(params[:limit_country]) if params[:limit_country].present?
+    @index = @index.page(page).per(10)
   end
 
   def show

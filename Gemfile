@@ -86,3 +86,6 @@ gem 'braintree'
 
 # get ruby variable into js
 gem 'gon'
+
+# Implement dynamic search
+gem 'pg_search'

@@ -5,5 +5,9 @@
 <% @listing.previews.each do |preview| %>
   <%= image_tag preview.url %>
 <% end %>
+<% if @listing.user == current_user || current_user.admin? %>
+  <%= link_to 'Edit this shyt', edit_listing_path(@listing) %>
+<% end %>
+
 
 <%= render '/reservations/form' %>

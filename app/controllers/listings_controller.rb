@@ -13,10 +13,17 @@ class ListingsController < ApplicationController
   end
 
   def new
+    if signed_out? || current_user.tenant?
+      redirect_to root_url, notice: 'You do not have the right to create a listing.'
+    end
     @listing = Listing.new()
   end
 
   def create
+    if signed_out? || current_user.tenant?
+      redirect_to root_url, notice: 'You do not have the right to create a listing.'
+    end
+
     @listing = current_user.listings.build(listing_params)
  
     respond_to do |format|
@@ -31,9 +38,18 @@ class ListingsController < ApplicationController
   end
 
   def edit
+    @listing = Listing.find(params[:id])
+    if @listing.nil? || ( @listing.user != current_user && !current_user.admin? )
+      redirect_to root_url, notice: 'You do not have the right to edit this listing.'
+    end
   end
 
   def update
+    @listing = Listing.find(params[:id])
+    if @listing.nil? || ( @listing.user != current_user && !current_user.admin? )
+      redirect_to root_url, notice: 'You do not have the right to edit this listing.'
+    end
+
     respond_to do |format|
       if @listing.update(listing_params)
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
@@ -46,6 +62,11 @@ class ListingsController < ApplicationController
   end
 
   def destroy
+    @listing = Listing.find(params[:id])
+    if @listing.nil? || ( @listing.user != current_user && !current_user.admin? )
+      redirect_to root_url, notice: 'You do not have the right to delete this listing.'
+    end
+
     @listing.destroy
   end
 

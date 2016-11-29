@@ -1,18 +1,19 @@
 <h1>Listing</h1>
 <% if signed_in? && ( current_user.host? || current_user.admin? ) %>
-  
-<% end %>
-
-<% @index.each do |listing| %>
-<div class='row a-listing-in-index'>
+<div>
   <%= link_to 'New Listing', new_listing_path %>
 </div>
+<% end %>
 
+
+<% @index.each do |listing| %>
+
+<div class='row a-listing-in-index'>
   <div class='a-listing-preview col-md-3'>
     <% if listing.previews.nil? || listing.previews.empty? %>
       <%= image_tag 'http://loremflickr.com/300/200/gundam,gunpla/all?r='+rand(1..999999).to_s %>
     <% else %>
-      <%= image_tag listing.previews[0].url %>
+      <%= image_tag listing.previews[0].indeximg.url %>
     <% end %>
   </div>
   <div class='col-md-9'>

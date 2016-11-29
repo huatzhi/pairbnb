@@ -21,6 +21,9 @@
       <div id="flash_<%= key %>"><%=h value %></div>
     <% end %>
   </div>
+  <div id='listing-index-link'>
+    <%= link_to 'Listings', listings_path %>
+  </div>
   <% if signed_in? %>
   <div id='self-profile-link'>
     <%= link_to 'Your Profile', current_user %>
@@ -32,7 +35,6 @@
   </div>
   <%  end %>
 
-  <!-- link to self profile with profile image -->
 
   <%= yield %>
 </body>

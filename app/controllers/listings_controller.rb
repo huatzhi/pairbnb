@@ -5,7 +5,8 @@ class ListingsController < ApplicationController
   def index
     page = params[:page]
     page ||= 1
-    @index = Listing.page(page)
+
+    @index = Listing.text_search(params[:q]).page(page).per_page(10)
     # Need to do the filter base on the input
   end
 

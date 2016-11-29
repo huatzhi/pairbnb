@@ -12,18 +12,18 @@
 
     <h5>Filter by:</h5>
 
-    <%= label_tag :price_min , "Minimum Price" %>
+    <%= label_tag :price_min , "Minimum Price: " %>
     <%= text_field_tag :price_min %>
-
-    <%= label_tag :price_max , "Maximum Price" %>
+    <br>
+    <%= label_tag :price_max , "Maximum Price: " %>
     <%= text_field_tag :price_max %> <!-- number_field_tag -->
-
+    <br>
     <%= label_tag :limit_city , "City: " %>
     <%= text_field_tag :limit_city %>
-
+    <br>
     <%= label_tag :limit_country , "Country: " %>
     <%= text_field_tag :limit_country %>
-
+    <br>
     <%= submit_tag 'search' %>
   <% end %>
 <!-- </div> -->

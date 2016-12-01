@@ -142,7 +142,6 @@ GEM
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
-    puma (3.6.0)
     rack (1.6.5)
     rack-protection (1.5.3)
       rack
@@ -251,7 +250,6 @@ DEPENDENCIES
   omniauth-facebook
   pg (~> 0.15)
   pg_search
-  puma
   rack-timeout
   rails (= 4.2.6)
   rails_12factor

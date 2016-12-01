@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Use puma just for the sake of using it? NO!!! IS FOR HEROKU SAKE!!!
-# gem 'puma', group: :production
+# gem 'puma', group: :production   
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -96,7 +96,7 @@ gem 'pg_search'
 gem 'rails_12factor', group: :production
 
 # To run unicorn server in heroku
-gem 'unicorn'
+gem 'unicorn', group: :production
 
 # Timeout for unicorn
 gem 'rack-timeout'

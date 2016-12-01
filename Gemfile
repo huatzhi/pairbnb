@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-#Use puma just for the sake of using it? NO!!! IS FOR HEROKU SAKE!!!
-gem 'puma'
+# Use puma just for the sake of using it? NO!!! IS FOR HEROKU SAKE!!!
+# gem 'puma', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

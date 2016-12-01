@@ -95,3 +95,6 @@ gem 'rails_12factor', group: :production
 
 # To run unicorn server in heroku
 gem 'unicorn'
+
+# Timeout for unicorn
+gem 'rack-timeout'

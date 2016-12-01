@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   post '/reservations/:id/pay' => 'reservations#pay', as: 'payment_checkout'
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
+  # the following line is a bad practice code but just to ensure it work
+  default_url_options :host => "pairbnb-practice.herokuapp.com"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.2.4"
+ruby "2.3.1"
 
 # Use puma just for the sake of using it? NO!!! IS FOR HEROKU SAKE!!!
 # gem 'puma', group: :production   

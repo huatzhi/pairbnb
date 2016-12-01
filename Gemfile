@@ -92,3 +92,6 @@ gem 'pg_search'
 
 # A gem that do 12 things
 gem 'rails_12factor', group: :production
+
+# To run unicorn server in heroku
+gem 'unicorn'

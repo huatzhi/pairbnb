@@ -1,3 +1,5 @@
+RACK_ENV=none RAILS_ENV=development unicorn -c config/unicorn.rb
+
 web: rails s
 
 web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb

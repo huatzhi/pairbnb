@@ -39,16 +39,18 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
-  # For seeding bulk data
-  gem 'faker'
+  
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
- gem 'guard-rspec', require: false
+  gem 'guard-rspec', require: false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # For seeding bulk data
+  gem 'faker'
 end
 
 # Use for bootstrap gem
@@ -103,7 +105,7 @@ gem 'unicorn', group: :production
 gem 'rack-timeout'
 
 # new relic
-gem 'newrelic_rpm'
+#gem 'newrelic_rpm'
 
 # rspec
 gem "rspec-rails", :group => [:test, :development]

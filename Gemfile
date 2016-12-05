@@ -39,6 +39,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
+  #gem 'shoulda-matchers'
+
+  #gem 'shoulda'
   
 end
 
@@ -50,7 +53,7 @@ group :development do
   gem 'spring'
 
   # For seeding bulk data
-  gem 'faker'
+  gem 'faker' 
 end
 
 # Use for bootstrap gem
@@ -113,6 +116,7 @@ gem "rspec-rails", :group => [:test, :development]
 group :test do
   gem "factory_girl_rails"
   gem "capybara"
+
 
   gem 'rspec-given'
 end

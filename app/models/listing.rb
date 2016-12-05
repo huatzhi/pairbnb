@@ -17,6 +17,4 @@ class Listing < ActiveRecord::Base
       self
     end
   end
-
-
 end

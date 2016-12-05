@@ -46,7 +46,7 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
+ gem 'guard-rspec', require: false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
@@ -101,3 +101,16 @@ gem 'unicorn', group: :production
 
 # Timeout for unicorn
 gem 'rack-timeout'
+
+# new relic
+gem 'newrelic_rpm'
+
+# rspec
+gem "rspec-rails", :group => [:test, :development]
+
+group :test do
+  gem "factory_girl_rails"
+  gem "capybara"
+
+  gem 'rspec-given'
+end

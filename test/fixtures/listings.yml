@@ -3,25 +3,29 @@
 one:
   title: MyString
   bedroom: 1
-  check_in: 2016-11-23 09:36:22
-  check_out: 2016-11-23 09:36:22
   number_of_guest: 1
   description: MyString
   rules: MyString
   price_per_night: 1.5
   availability_requirement: MyString
-  main_image: MyString
   user_id: 
+  created_at: 2016-12-05 14:31:23
+  updated_at: 2016-12-05 14:31:23
+  note: MyString
+  country: MyString
+  city: MyString
 
 two:
   title: MyString
   bedroom: 1
-  check_in: 2016-11-23 09:36:22
-  check_out: 2016-11-23 09:36:22
   number_of_guest: 1
   description: MyString
   rules: MyString
   price_per_night: 1.5
   availability_requirement: MyString
-  main_image: MyString
   user_id: 
+  created_at: 2016-12-05 14:31:23
+  updated_at: 2016-12-05 14:31:23
+  note: MyString
+  country: MyString
+  city: MyString

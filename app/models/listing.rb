@@ -18,4 +18,13 @@ class Listing < ActiveRecord::Base
       self
     end
   end
+
+  def self.scope_search(query='', price_minimum='',price_maximum='',limited_city='', limited_country='')
+    index_list = self.text_search(query)
+    index_list = index_list.price_min(price_minimum) if price_minimum.present?
+    index_list = index_list.price_max(price_maximum) if price_maximum.present?
+    index_list = index_list.limit_city(limited_city) if limited_city.present?
+    index_list = index_list.limit_country(limited_country) if limited_country.present?
+    index_list
+  end
 end

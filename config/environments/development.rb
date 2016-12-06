@@ -42,7 +42,7 @@ Rails.application.configure do
 
   require 'carrierwave'
   require 'carrierwave/orm/activerecord'
-  
+
   # for email
   config.active_job.queue_adapter = :sidekiq
 
@@ -60,6 +60,6 @@ Rails.application.configure do
    :authentication       => "plain",
    :enable_starttls_auto => true
   }
-  
+
   config.action_mailer.default_url_options = { :host => "pairbnb-practice.herokuapp.com" }
 end

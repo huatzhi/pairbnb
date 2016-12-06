@@ -3,18 +3,15 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   def index
-    page = params[:page]
-    page ||= 1
-
-    query = params[:query]
-    query ||= ""
+    page = params[:page] || 1
+    query = params[:query] || ""
+    price_min = params[:price_min] || ""
+    price_max = params[:price_max] || ""
+    limit_city = params[:limit_city] || ""
+    limit_country = params[:limit_country] || ""
 
     # @index = Listing.text_search(query).page(page).per(10)
-    @index = Listing.text_search(query)
-    @index = @index.price_min(params[:price_min]) if params[:price_min].present? 
-    @index = @index.price_max(params[:price_max]) if params[:price_max].present?
-    @index = @index.limit_city(params[:limit_city]) if params[:limit_city].present?
-    @index = @index.limit_country(params[:limit_country]) if params[:limit_country].present?
+    @index = Listing.scope_search(query,price_min,price_max,limit_city,limit_country)
     @index = @index.page(page).per(10)
   end
 
@@ -34,13 +31,13 @@ class ListingsController < ApplicationController
     end
 
     @listing = current_user.listings.build(listing_params)
- 
+
     respond_to do |format|
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         # format.json { render action: 'show', status: :created, location: @listing }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         # format.json { render json: @listing.errors, status: :unprocessable_entity }
       end
     end
@@ -64,7 +61,7 @@ class ListingsController < ApplicationController
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
         # format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         # format.json { render json: @listing.errors, status: :unprocessable_entity }
       end
     end

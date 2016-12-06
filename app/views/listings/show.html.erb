@@ -9,5 +9,6 @@
   <%= link_to 'Edit this shyt', edit_listing_path(@listing) %>
 <% end %>
 
-
+<% listing = @listing %>
+<% reservation = @reservation %>
 <%= render '/reservations/form' %>

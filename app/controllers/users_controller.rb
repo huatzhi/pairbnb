@@ -1,17 +1,18 @@
 class UsersController < Clearance::UsersController
 
   def create
-    @user = user_from_params
+    user = user_from_params
     #read the params here, and choose to change it to host or stay tenant
     if params['role'].to_i == 1
-      @user.host!
+      user.host!
     end
 
-    if @user.save
-      sign_in @user
+    if user.save
+      sign_in user
       redirect_back_or url_after_create
     else
-      render template: "users/new"
+      @user = user
+      render template: "users/new", :notice => 'something went wrong'
     end
   end
 
@@ -22,10 +23,11 @@ class UsersController < Clearance::UsersController
   end
 
   def show
-    @user = User.find(params[:id])
-    if @user.nil?
+    user = User.find(params[:id])
+    if user.nil?
       redirect_to root_url
     end
+    @user = user
   end
 
   def index
@@ -41,28 +43,32 @@ class UsersController < Clearance::UsersController
     unless current_user.id == params[:id].to_i || current_user.admin?
       redirect_to root_url
     end
-    @user = User.find(params[:id])
-    if @user.nil?
+    user = User.find(params[:id])
+    if user.nil?
       redirect_to root_url
     end
+    @user = user
   end
 
   def update
     unless current_user.id == params[:id].to_i || current_user.admin?
       redirect_to root_url
     end
-    @user = User.find(params[:id])
-    if @user.nil?
+    user = User.find(params[:id])
+    if user.nil?
       redirect_to root_url
     end
-    user_edit_data = params[:user]
-    @user.email=user_edit_data[:email]
-    @user.first_name = user_edit_data[:first_name]
-    unless user_edit_data[:avatar].nil?# || user_edit_data[:avatar].empty?
-      @user.avatar = user_edit_data[:avatar]
+    if user.update_attributes(user_params)
+      redirect_to user, notice: 'User info was successfully updated.'
     end
-    @user.save!
-    redirect_to @user, notice: 'User info was successfully updated.' 
+    # user_edit_data = params[:user]
+    # user.email = user_edit_data[:email]
+    # user.first_name = user_edit_data[:first_name]
+    # unless user_edit_data[:avatar].nil?# || user_edit_data[:avatar].empty?
+    #   user.avatar = user_edit_data[:avatar]
+    # end
+    # user.save!
+    # redirect_to user, notice: 'User info was successfully updated.'
   end
 
   def destroy
@@ -70,11 +76,11 @@ class UsersController < Clearance::UsersController
       redirect_to root_url
     end
 
-    @user = User.find(params[:id])
-    if @user.nil?
+    user = User.find(params[:id])
+    if user.nil?
       redirect_to root_url
     end
-    @user.destroy
+    user.destroy
     unless current_user.id == params[:id].to_i
       redirect_to action: 'index'
     else
@@ -82,4 +88,10 @@ class UsersController < Clearance::UsersController
       redirect_to root_url
     end
   end
+
+  private
+  def user_params
+    params.require(:user).permit(:email, :first_name, :avatar)
+  end
+
 end

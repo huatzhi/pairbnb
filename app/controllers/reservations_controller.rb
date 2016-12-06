@@ -10,7 +10,6 @@ class ReservationsController < ApplicationController
     end
     reservation = listing.reservations.new(reservation_params)
     reservation.user = current_user
-    reservation.calculate_price
     if reservation.save
       # ReservationJob.perform_later(current_user, listing.user, reservation.id)
       ReservationMailer.booking_email(current_user, listing.user, reservation.id).deliver_later
@@ -30,10 +29,12 @@ class ReservationsController < ApplicationController
   end
 
   def pay
-    @reservation = Reservation.find(params[:id])
-    if @reservation.nil? || @reservation.user != current_user
+    reservation = Reservation.find(params[:id])
+    if reservation.nil? || reservation.user != current_user
       redirect_to root_url
     end
+
+    @reservation = reservation
 
     nonce_from_the_client = params[:payment_method_nonce]
 
@@ -48,7 +49,7 @@ class ReservationsController < ApplicationController
       @reservation.paid!
       redirect_to root_url, notice: 'Payment succeed!'
     else
-      redirect_to @reservation, notice: 'Payment failure!'
+      redirect_to reservation, notice: 'Payment failure!'
     end
   end
 

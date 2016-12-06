@@ -8,10 +8,10 @@
 
 require 'faker'
 
-100.times do 
+100.times do
   user = User.new
   user.email = Faker::Internet.email
-  user.first_name = Faker::Name.first_name 
+  user.first_name = Faker::Name.first_name
   user.password = Faker::Internet.password
   if user.save
     number_of_listing = rand(0..3)

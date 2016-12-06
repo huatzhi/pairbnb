@@ -2,9 +2,9 @@
   <% if current_user.tenant? %>
     <h3>Rserve this listing</h3>
 
-    <% @reservation ||= Reservation.new %>
-    <%= form_for [@listing, @reservation] do |f| %>
-      <% if @reservation.errors.any? %>
+    <% reservation ||= Reservation.new %>
+    <%= form_for [listing, reservation] do |f| %>
+      <% if reservation.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 

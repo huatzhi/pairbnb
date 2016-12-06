@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :reservations, only: [:show]
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "sessions", only: [:create]
-  
+
   get '/users/becomeahost' => 'users#tohost', as: 'to_host'
 
   resources :users, controller: "users", only: [:create] do

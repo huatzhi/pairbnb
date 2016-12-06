@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 ruby "2.3.1"
-
 # Use puma just for the sake of using it? NO!!! IS FOR HEROKU SAKE!!!
-# gem 'puma', group: :production   
-
+# gem 'puma', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
@@ -42,7 +40,7 @@ group :development, :test do
   #gem 'shoulda-matchers'
 
   #gem 'shoulda'
-  
+
 end
 
 group :development do
@@ -53,7 +51,7 @@ group :development do
   gem 'spring'
 
   # For seeding bulk data
-  gem 'faker' 
+  gem 'faker'
 end
 
 # Use for bootstrap gem
@@ -116,7 +114,6 @@ gem "rspec-rails", :group => [:test, :development]
 group :test do
   gem "factory_girl_rails"
   gem "capybara"
-
 
   gem 'rspec-given'
 end

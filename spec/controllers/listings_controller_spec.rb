@@ -4,7 +4,7 @@ RSpec.describe ListingsController, type: :controller do
 
   describe 'GET index' do
     before do
-      100.times do
+      30.times do
         x = Listing.new
         x.save
       end
@@ -33,6 +33,6 @@ RSpec.describe ListingsController, type: :controller do
   end
 
   describe 'GET show' do
-    
+
   end
 end

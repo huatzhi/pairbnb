@@ -1,7 +1,9 @@
-<p><%= @reservation.user.first_name %></p>
+<% reservation_owner = @reservation.user %>
+<p><%= reservation_owner.first_name %></p>
 <p>IN: <%= @reservation.check_in %></p>
 <p>OUT: <%= @reservation.check_out %></p>
-<h3><%= @reservation.listing.title %></h3>
+<% listing_reserved = @reservation.listing %>
+<h3><%= listing_reserved.title %></h3>
 
 
 <% unless @reservation.paid? %>

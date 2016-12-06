@@ -16,7 +16,7 @@ class SessionsController < Clearance::SessionsController
       end
     end
   end
-  
+
   def create_from_omniauth
     auth_hash = request.env["omniauth.auth"]
     # host_user = false
@@ -26,7 +26,7 @@ class SessionsController < Clearance::SessionsController
 
     authentication = Authentication.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"]) || Authentication.create_with_omniauth(auth_hash)
     if authentication.user
-      user = authentication.user 
+      user = authentication.user
       authentication.update_token(auth_hash)
       @next = root_url
       @notice = "Signed in!"
@@ -35,9 +35,8 @@ class SessionsController < Clearance::SessionsController
     else
       user = User.create_with_auth_and_hash(authentication,auth_hash)
       sign_in(user)
-      @next = edit_user_path(user)   
+      @next = edit_user_path(user)
       @notice = "User created - confirm or edit details..."
     end
-    
   end
 end
